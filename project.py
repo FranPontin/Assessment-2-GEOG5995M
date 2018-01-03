@@ -28,7 +28,7 @@ for i, row in enumerate(reader):
             y0= i
 
 # Check bombing coordiantes                   
-print(x0,y0)
+print('Bombing point:', x0,y0)
 
 
 
@@ -224,7 +224,7 @@ min = np.min(agents, axis=0)
 listmin = list(min)
 
 # Print minimum endpoints as visual information for the user
-print('Furthest west and sorth points', listmin)
+print('Furthest west and south points', listmin)
 
 
 #Create 300x300 density map of bacteria
