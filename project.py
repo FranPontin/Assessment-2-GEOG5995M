@@ -27,7 +27,7 @@ for i, row in enumerate(reader):
             x0= j
             y0= i
 
-# Check bombing co-ordiantes                   
+# Check bombing coordiantes                   
 print(x0,y0)
 
 
@@ -47,12 +47,12 @@ plt.show()
 
 
 
-# Create agents- the bacteria
+# Create agents (the bacteria)
 agents = []
 
 
 
-# Print suggested inp[uts for user to test model
+# Print suggested inputs for user to test model
 print("To test suggest: number of bacteria= 5000, building height = 75 m and updraft probability = 0.1")
 
 
@@ -65,12 +65,12 @@ num_of_agents_string = input('Enter number of bacteria:')
 # Convert string input to an integer
 num_of_agents = int(num_of_agents_string)
 
-# Print number of agents as visual confimration for user
+# Print number of agents as visual confirmation for user
 print('Number of bacteria =', num_of_agents)
 
 
   
-# Define building height (strating Z coordinate) through user input:
+# Define building height (starting Z coordinate) through user input:
 
 # Instruct user to enter building height
 z0_string = input('Enter building heigh (m):')
@@ -78,7 +78,7 @@ z0_string = input('Enter building heigh (m):')
 # Convert string input to an integer
 z0 = int(z0_string)
 
-# Print building height as visual confimration for user
+# Print building height as visual confirmation for user
 print('Building height (m) =',z0 )
 
 
@@ -91,14 +91,14 @@ updraft_float = input('Enter probability of an updraft (enter value between 0.1 
 # Convert string input to a float
 updraft = float(updraft_float)
 
-# Print probability of an updraft as visual confimration for user
+# Print probability of an updraft as visual confirmation for user
 print('Probability of an updraft =', updraft)
 
 
 
-# Define number of iterations calcualted form user input:
+# Define number of iterations calculated from user input:
 
-# Inform user how the number of iterations is calcualted
+# Inform user how the number of iterations is calculated 
 print('Number of iterations = probaility x 100 x building height, to ensure all bacteria have fallen to the ground when recorded')
 
 # Calcualte number of iterations
@@ -107,12 +107,12 @@ num_of_iterations_float = (z0 * updraft * 100)
 # Convert float output to an integer output
 num_of_iterations = int(num_of_iterations_float)
 
-# Print probability onumber of iterations as visual confimration for user
+# Print number of iterations as visual confirmation for user
 print('Number of iterations', num_of_iterations)
 
 
 
-# Define starting co-ordiantes of the agents (the bombing point)
+# Define starting coordinates of the agents (the bombing point)
 
 for i in range(num_of_agents):
     agents.append([y0,x0,z0])
@@ -132,16 +132,16 @@ for k in range(num_of_agents):
         # How agents will move if above the height of the building:
         if agents[k][2] >= z0:
             
-            # If the generated random float is less than the inputed updraft, the bacteria will rise 1m per iteration
+            # If the generated random float is less than the inputted updraft, the bacteria will rise 1m per iteration
             if randUP < updraft:
                 agents[k][2] = agents[k][2] + 1
             
             # There is a 10% chance of no elevation change
-            # If: Inputed updraf < genertaed random float < Inputed updraft +0.1, the bacteria will not change elevation
+            # If: inputted updraft < generated random float < inputted updraft +0.1, the bacteria will not change elevation
             elif randUP < updraft +0.1:
                 agents[k][2] = agents[k][2]
             
-            # If the genertaed random float is greater than the inputed updraft, the bacteria will fall 1m per iteration
+            # If the generated random float is greater than the inputted updraft, the bacteria will fall 1m per iteration
             else:
                 agents[k][2] = agents[k][2] - 1
         
@@ -156,29 +156,29 @@ for k in range(num_of_agents):
         # Moving NSEW
         
         # Generate random float
-        # Name random float randNSWEW so elevation based on different random numbers to those determining updraft
+        # Name random float randNSEW so elevation based on different random numbers to those determining updraft
         randNSEW=random.random()
         
-        # Bateria move based on wind direction as long as their eolevation is greater than 0 i.e. haven't reached the ground yet
+        # Bacteria move based on wind direction as long as their elevation is greater than 0 i.e. haven't reached the ground yet
         if agents[k][2] > 0:
             
             # There is 5% chance of the wind direction blowing the bacteria west
-            # If: the genertaed random float < 0.05 the bacteria moves 1m west per iteration
+            # If: the generated random float < 0.05 the bacteria moves 1m west per iteration
             if randNSEW < 0.05:
                 agents[k][1] = agents[k][1] - 1
             
             # There is 10% chance of the wind direction blowing the bacteria north
-            # If: 0.05 < genertaed random float < 0.15 the bacteria moves 1m north per iteration
+            # If: 0.05 < generated random float < 0.15 the bacteria moves 1m north per iteration
             elif randNSEW < 0.15:
                 agents[k][0] = agents[k][0] + 1
             
             # There is 10% chance of the wind direction blowing the bacteria south
-            # If: 0.15 < genertaed random float < 0.25 the bacteria moves 1m south per iteration
+            # If: 0.15 < generated random float < 0.25 the bacteria moves 1m south per iteration
             elif randNSEW < 0.25:
                 agents[k][0] = agents[k][0] - 1
             
             # There is 75% chance of the wind direction blowing the bacteria east
-            # If: the genertaed random float > 0.25 the bacteria moves 1m east per iteratio
+            # If: the generated random float > 0.25 the bacteria moves 1m east per iteratio
             else:
                 agents[k][1] = agents[k][1] + 1
         
@@ -189,7 +189,7 @@ for k in range(num_of_agents):
 
 
 
-# Find the mean of the final coordiantes of the bacteria:
+# Find the mean of the final coordinates of the bacteria:
 
 # Calculate mean 
 mean = np.mean(agents, axis=0)
@@ -217,7 +217,7 @@ print('Furthest east and north points', listmax)
 
 # Find the furthest west and south co-ordinates:
     
-# Calculate the min cooridnates of the bacteria (smallest x and smallets y co-ordinate)
+# Calculate the min coordinates of the bacteria (smallest x and smallest y coordinates)
 min = np.min(agents, axis=0)
 
 # Convert from array to list
@@ -251,14 +251,14 @@ plt.savefig('bacterial_bomb_output.png')
 
 
 
-#Create a zoomed and centered density map of bacteria:
+#Create a zoomed and centred density map of bacteria:
 
-# Plot graph with size based on max and min coordiantes of furthest agents
+# Plot graph with size based on max and min coordinates of furthest agents
 
-# Y coordiantes of graph centered around bacteria location
+# Y coordinates of graph centered around bacteria location
 plt.ylim((listmin[0]-5),(listmax[0]+5))
 
-# X coordiantes of graph centered around bacteria location and bombing point
+# X coordiantes of graph centred around bacteria location and bombing point
 plt.xlim(45,(listmax[1]+5))
 
 # Plot bacteria end locations
@@ -278,7 +278,7 @@ plt.show()
 plt.savefig('bacterial_bomb_output_centered.png')
 
 
-#Read out a CSv file:
+# Read out a CSV file:
 
 # Produce CSV output of bacteria location, if all the bacteria are still within the original 300x300 parameter, of the read in data:   
 if listmax[0] and listmax[1] <= 300:
@@ -311,7 +311,7 @@ if listmax[0] and listmax[1] <= 300:
 # If all the bacteria are not within the original 300x300 parameter, of the read in data, no CSV output is produced:    
 else:
     
-    # A messgae is displayed to the user indicating no file has been produced
+    # A message is displayed to the user indicating no file has been produced
     print("Output area too large to produce comparable CSV file")
 
 
