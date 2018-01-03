@@ -53,20 +53,20 @@ agents = []
 
 
 # Print suggested inp[uts for user to test model
-print("To test suggest: number of agents= 5000, building height = 75 m and updraft probability = 0.1")
+print("To test suggest: number of bacteria= 5000, building height = 75 m and updraft probability = 0.1")
 
 
 
 # Define number of agents through user input:
 
 # Instruct user to enter number of agents
-num_of_agents_string = input('Enter number of agents:')
+num_of_agents_string = input('Enter number of bacteria:')
 
 # Convert string input to an integer
 num_of_agents = int(num_of_agents_string)
 
 # Print number of agents as visual confimration for user
-print('Number of agents =', num_of_agents)
+print('Number of bacteria =', num_of_agents)
 
 
   
